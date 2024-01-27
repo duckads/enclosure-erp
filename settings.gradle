@@ -1,0 +1,42 @@
+rootProject.name = 'enclosure-erp'
+
+def subModule = ["common", "core:core-api", "domain","storage:db-core", "support"]
+
+def GRADLE_TEXT = """
+    dependencies {
+    
+    }
+"""
+
+
+subModule.forEach( moduleName -> {
+    include moduleName
+})
+
+subModule.forEach (moduleName -> {
+    if (moduleName.contains(":")) moduleName = moduleName.replace(":", "/")
+    def moduleDir = file(rootDir, moduleName)
+    if (!moduleDir.exists()) moduleDir.mkdirs()
+
+    if (!file(moduleDir, "build.gradle").exists()) {
+        def buildGradleFile = new File(moduleDir, "build.gradle")
+        buildGradleFile.text = GRADLE_TEXT
+    }
+
+    [
+            "src/main/java/kr/co/shield",
+            "src/main/resources",
+            "src/test/java/kr/co/shield",
+            "src/test/resources"
+    ].forEach( src -> {
+        def srcDir = file(moduleDir.path, src)
+        if (!srcDir.exists()) {
+            srcDir.mkdirs()
+        }
+    })
+
+})
+
+def file(dir, name) {
+    return file("${dir}/${name}")
+}

@@ -1,0 +1,32 @@
+spring:
+  datasource: ## main db
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://${DB_SERVER:localhost}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
+      username: ${DB_USERNAME:root}
+      password: ${DB_PASSWORD:1234}
+      connection-test-query: select 1 from dual
+      connection-timeout: 20000
+      keepalive-time: 300000
+      max-lifetime: 900000
+      maximum-pool-size: ${DB_POOLSIZE:30}
+      minimum-idle: ${DB_POOLSIZE:30}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  # 실행되는 쿼리 콘솔에 출력
+  jpa:
+    generate-ddl: true # 해당을 설정해줘야 정상 동작 함
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: create # create create-drop update validate none
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  messages:
+    always-use-message-format: true
+    basename: message/messages
+    cache-duration: 3
+    encoding: UTF-8
+    fallback-to-system-locale: false

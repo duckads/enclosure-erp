@@ -1,0 +1,40 @@
+plugins {
+	id "java"
+	id "java-library"
+	id "org.springframework.boot" version "${springBootVersion}"
+	id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
+}
+
+java.sourceCompatibility = JavaVersion.valueOf("VERSION_${property("javaVersion")}")
+
+allprojects {
+	group = "${property("projectGroup")}"
+	version = "${property("applicationVersion")}"
+
+	repositories {
+		mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: "java"
+	apply plugin: "java-library"
+	apply plugin: "org.springframework.boot"
+	apply plugin: "io.spring.dependency-management"
+
+
+	dependencyManagement {
+		imports {
+			mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudDependenciesVersion")}")
+		}
+	}
+
+	dependencies {
+		implementation project(':common')
+		implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+		compileOnly 'org.projectlombok:lombok'
+		testImplementation("org.springframework.boot:spring-boot-starter-test")
+	}
+
+	java.sourceCompatibility = JavaVersion.valueOf("VERSION_${property("javaVersion")}")
+}
