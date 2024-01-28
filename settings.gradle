@@ -1,13 +1,12 @@
 rootProject.name = 'enclosure-erp'
 
-def subModule = ["common", "core:core-api", "domain","storage:db-core", "support"]
+def subModule = ["common", "core:auth-api", "core:core-api", "domain","storage:db-core", "support"]
 
 def GRADLE_TEXT = """
     dependencies {
     
     }
 """
-
 
 subModule.forEach( moduleName -> {
     include moduleName
@@ -34,7 +33,6 @@ subModule.forEach (moduleName -> {
             srcDir.mkdirs()
         }
     })
-
 })
 
 def file(dir, name) {

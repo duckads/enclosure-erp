@@ -23,7 +23,11 @@ public class StringUtils {
 		}
 		return returnStr;
 	}
-	
+
+	public static boolean hasString(Object value) {
+        return value != null && !value.toString().isBlank();
+	}
+
 	public static String replace(String str, Map<String, Object> params) {
 		return replace("", str, params);
 	}
@@ -125,7 +129,8 @@ public class StringUtils {
 		}
 		return returnStr;
 	}
-	
+
+
 //	public static void main(String[] args) throws Exception {
 //		String value = "%E6%B0%B4 %E6%9E%97 + %E7%AB%A0 @1034267";
 //		System.out.println("UTF-8 :" + URLDecoder.decode(value, "utf-8"));

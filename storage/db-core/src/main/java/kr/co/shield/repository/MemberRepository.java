@@ -1,15 +1,15 @@
 package kr.co.shield.repository;
 
 
-import kr.co.shield.domain.Admin;
+import kr.co.shield.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface AdminRepository extends JpaRepository<Admin, Integer>, JpaSpecificationExecutor<Admin> {
+public interface MemberRepository extends JpaRepository<Member, Integer>, JpaSpecificationExecutor<Member> {
 	
-	Optional<Admin> findByAdminId(@Param("adminId") String adminId);
+	Optional<Member> findByMemberId(@Param("memberId") String memberId);
 	
 }
