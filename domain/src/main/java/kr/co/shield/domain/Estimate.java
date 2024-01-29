@@ -21,14 +21,22 @@ public class Estimate extends Option {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int seq;
+	@Column(name= "estimate_code", length = 256, nullable = false)
+	@ColumnDefault("''")
+	private String estimateCode;
 	@Column(name= "estimate_nm", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String estimateNm;
 	@Column(name= "estimate_option", columnDefinition = "TEXT")
 	private String estimateOption;
-	@Column(name= "estimate_dtl", length = 64, nullable = false)
-	@ColumnDefault("''")
+	@Column(name= "estimate_dtl", columnDefinition = "TEXT")
 	private String estimateDtl;
+	@Column(name= "estimate_note", columnDefinition = "TEXT")
+	private String estimateNote;
+	@Column(name= "producer_seq")
+	private int producerSeq;
+	@Column(name= "member_seq")
+	private int memberSeq;
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
 	private String actSt;
@@ -54,9 +62,13 @@ public class Estimate extends Option {
 
 		return EstimateDto.builder()
 				.seq(this.seq)
+				.estimateCode(this.estimateCode)
 				.estimateNm(this.estimateNm)
 				.estimateOption(this.estimateOption)
 				.estimateDtl(this.estimateDtl)
+				.estimateNote(this.estimateNote)
+				.producerSeq(this.producerSeq)
+				.memberSeq(this.memberSeq)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)

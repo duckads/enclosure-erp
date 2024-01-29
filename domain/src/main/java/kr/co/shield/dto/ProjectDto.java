@@ -16,10 +16,13 @@ import java.util.List;
 public class ProjectDto extends Option {
 	
 	private int seq;
+	private String projectCode;
 	private String projectNm;
 	private String constructionNm;
 	private String siteLocation;
 	private String projectOption;
+	private String siteManager;
+	private String shieldSiteManager;
 	private String actSt;
 	private Date regDt;
 	private Date updDt;

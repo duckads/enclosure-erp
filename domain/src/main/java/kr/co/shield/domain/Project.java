@@ -21,6 +21,9 @@ public class Project extends Option {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int seq;
+	@Column(name= "project_code", length = 256, nullable = false)
+	@ColumnDefault("''")
+	private String projectCode;
 	@Column(name= "project_nm", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String projectNm;
@@ -32,6 +35,10 @@ public class Project extends Option {
 	private String siteLocation;
 	@Column(name= "project_option", columnDefinition = "TEXT")
 	private String projectOption;
+	@Column(name= "site_manager", columnDefinition = "TEXT")
+	private String siteManager;
+	@Column(name= "shield_site_manager", columnDefinition = "TEXT")
+	private String shieldSiteManager;
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
 	private String actSt;
@@ -56,10 +63,13 @@ public class Project extends Option {
 	public ProjectDto getDto() {
 		return ProjectDto.builder()
 				.seq(this.seq)
+				.projectCode(this.projectCode)
 				.projectNm(this.projectNm)
 				.constructionNm(this.constructionNm)
 				.siteLocation(this.siteLocation)
 				.projectOption(this.projectOption)
+				.siteManager(this.siteManager)
+				.shieldSiteManager(this.shieldSiteManager)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)

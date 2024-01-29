@@ -43,7 +43,7 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		this.excludePathPattern.addAll(List.of("/.well-known/jwks.json", "/access", "/signin", "/join"));
+		this.excludePathPattern.addAll(List.of("/auth/access", "/auth/signin", "/auth/join"));
 		
 		registry
 		.addInterceptor(this.tokenHandlerInterceptor)

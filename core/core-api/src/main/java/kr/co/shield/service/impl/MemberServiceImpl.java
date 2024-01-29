@@ -1,15 +1,18 @@
 package kr.co.shield.service.impl;
 
 import jakarta.transaction.Transactional;
-import kr.co.shield.common.ShieldProperty;
+import kr.co.shield.domain.ExternalMember;
 import kr.co.shield.domain.Member;
+import kr.co.shield.dto.ExternalMemberDto;
 import kr.co.shield.dto.MemberDto;
+import kr.co.shield.repository.ExternalMemberRepository;
 import kr.co.shield.repository.MemberRepository;
 import kr.co.shield.service.inf.MemberService;
 import kr.co.shield.utility.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,7 +21,23 @@ import java.util.stream.Collectors;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+    private final ExternalMemberRepository externalMemberRepository;
+
+    @Override
+    public List<MemberDto> findAll() {
+        List<MemberDto> rtnList = null;
+
+        List<Member> members = this.memberRepository.findAll();
+        if (members.isEmpty()) {
+            rtnList = Collections.emptyList();
+        } else {
+            rtnList = members.stream()
+                    .map(e -> e.getDto())
+                    .collect(Collectors.toList());
+        }
+        return rtnList;
+    }
 
     @Override
     @Transactional
@@ -43,5 +62,26 @@ public class MemberServiceImpl implements MemberService {
         }
 
         return user;
+    }
+
+    @Override
+    public List<ExternalMemberDto> findExternalAll() {
+        List<ExternalMemberDto> rtnList = null;
+        List<ExternalMember> members = this.externalMemberRepository.findAll();
+        if (members.isEmpty()) {
+            rtnList = Collections.emptyList();
+        } else {
+            rtnList = members.stream()
+                    .map(e -> e.getDto())
+                    .collect(Collectors.toList());
+        }
+
+        return rtnList;
+    }
+
+    @Override
+    public ExternalMemberDto findExternalMember() {
+        ExternalMemberDto rtnObj = null;
+        return rtnObj;
     }
 }

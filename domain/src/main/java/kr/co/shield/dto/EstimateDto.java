@@ -15,9 +15,13 @@ import java.util.Date;
 public class EstimateDto extends Option {
 	
 	private int seq;
+	private String estimateCode;
 	private String estimateNm;
 	private String estimateOption;
 	private String estimateDtl;
+	private String estimateNote;
+	private int producerSeq;
+	private int memberSeq;
 	private String actSt;
 	private Date regDt;
 	private Date updDt;

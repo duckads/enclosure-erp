@@ -2,6 +2,7 @@ package kr.co.shield.config.jwt;
 
 import com.google.common.reflect.TypeToken;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.Jwts;
 import kr.co.shield.util.KeyUtil;
 import kr.co.shield.common.ShieldProperty;
 import kr.co.shield.common.exception.UnauthorizedException;
@@ -9,14 +10,17 @@ import kr.co.shield.utility.StringUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.util.Base64;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * https://velog.io/@chang626/JWT-코드-및-Security-설정
@@ -86,8 +90,29 @@ public class JwtTokenProvider { // implements InitializingBean {
 		
 		return claims;
 	}
-	
-	private String parseToken(String token) {
+
+	public boolean validateToken(String token) {
+		try {
+			log.info("Validate token: {}", token);
+			Key publicKey = KeyUtil.parsingKey(SignatureAlgorithm.forName(getAlgorithm(token)));
+			Jwts.parser().setSigningKey(publicKey).build();
+			return true;
+		} catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+			log.info("잘못된 JWT 서명입니다.");
+		} catch (ExpiredJwtException e) {
+			log.info("만료된 JWT 토큰입니다.");
+		} catch (UnsupportedJwtException e) {
+			log.info("지원하지 않는 JWT 토큰입니다.");
+		} catch (IllegalArgumentException | NullPointerException e) {
+			log.info("JWT 토큰이 잘못되었습니다.");
+		} catch (Exception e) {
+			log.info("잘못된 요청입니다.");
+		}
+		return false;
+	}
+
+
+	public String parseToken(String token) {
 		if (StringUtils.hasString(token)) {
 			if (token.startsWith(ShieldProperty.RK_AUTHORIZATION_BEARER)) {
 				token = token.substring(ShieldProperty.RK_AUTHORIZATION_BEARER.length());
@@ -95,6 +120,16 @@ public class JwtTokenProvider { // implements InitializingBean {
 			return token;
 		}
 		return null;
+	}
+
+	public Authentication getAuthentication(String token) {
+		Jws<Claims> claims = parseClaims(token);
+		String subject = claims.getBody().getSubject();
+		String userRoles = (String)claims.getBody().get(ShieldProperty.JWT_PAYLOAD_claim_roles);
+		Collection<? extends GrantedAuthority> authorities = Arrays.stream(userRoles.split(","))
+				.map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
+		return new UsernamePasswordAuthenticationToken(subject, token, authorities);
 	}
 	
 	private String getAlgorithm(String token) {
