@@ -2,9 +2,9 @@ spring:
   datasource: ## main db
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://${DB_SERVER:localhost}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
-      username: ${DB_USERNAME:root}
-      password: ${DB_PASSWORD:1234}
+      jdbc-url: jdbc:mysql://${DB_SERVER:192.168.0.58}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
+      username: ${DB_USERNAME:duckads}
+      password: ${DB_PASSWORD:duckads}
       connection-test-query: select 1 from dual
       connection-timeout: 20000
       keepalive-time: 300000
@@ -21,7 +21,7 @@ spring:
         show_sql: true
         format_sql: true
     hibernate:
-      ddl-auto: create-drop # create create-drop update validate none
+      ddl-auto: none # create create-drop update validate none
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
   messages:
@@ -30,3 +30,5 @@ spring:
     cache-duration: 3
     encoding: UTF-8
     fallback-to-system-locale: false
+
+
