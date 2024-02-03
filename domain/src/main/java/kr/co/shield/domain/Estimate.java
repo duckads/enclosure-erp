@@ -1,5 +1,6 @@
 package kr.co.shield.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import kr.co.shield.dto.EstimateDto;
 import kr.co.shield.ext.Option;
@@ -8,7 +9,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,13 +27,11 @@ public class Estimate extends Option {
 	@Column(name= "estimate_code", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String estimateCode;
-	@Column(name= "estimate_nm", length = 256, nullable = false)
+	@Column(name= "estimate_nm", length = 256)
 	@ColumnDefault("''")
 	private String estimateNm;
 	@Column(name= "estimate_option", columnDefinition = "TEXT")
 	private String estimateOption;
-	@Column(name= "estimate_dtl", columnDefinition = "TEXT")
-	private String estimateDtl;
 	@Column(name= "estimate_note", columnDefinition = "TEXT")
 	private String estimateNote;
 	@Column(name= "producer_seq")
@@ -48,7 +49,7 @@ public class Estimate extends Option {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
-	
+
 	@Override
 	protected String getOption() {
 		return estimateOption;
@@ -74,4 +75,8 @@ public class Estimate extends Option {
 				.updDt(this.updDt)
 				.build();
 	}
+
+	@OneToMany(mappedBy = "estimate")
+	@JsonManagedReference
+	private List<EstimateDtl> estimateDtl = new ArrayList<>();
 }

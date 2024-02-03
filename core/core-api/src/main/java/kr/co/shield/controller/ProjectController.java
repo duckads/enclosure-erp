@@ -19,7 +19,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 public class ProjectController {
-    private ProjectService projectService;
+    private final ProjectService projectService;
 
     @GetMapping
     public ResponseEntity<List<ProjectDto>> list(HttpServletRequest request) {

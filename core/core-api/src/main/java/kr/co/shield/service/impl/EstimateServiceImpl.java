@@ -29,7 +29,7 @@ public class EstimateServiceImpl implements EstimateService {
             rtnList = Collections.emptyList();
         } else {
             rtnList = estimates.stream()
-                    .map(e -> e.getDto())
+                    .map(Estimate::getDto)
                     .collect(Collectors.toList());
         }
         return rtnList;

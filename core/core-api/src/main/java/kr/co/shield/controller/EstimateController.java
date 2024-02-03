@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping(value = "/estimate", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/estimates", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @RestController
 public class EstimateController {
     
-    private EstimateService estimateService;
+    private final EstimateService estimateService;
     
     @GetMapping
     public ResponseEntity<List<EstimateDto>> list(HttpServletRequest request) {
