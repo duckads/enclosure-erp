@@ -20,7 +20,7 @@ public class Project extends Option {
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int seq;
+	private Long seq;
 	@Column(name= "project_code", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String projectCode;

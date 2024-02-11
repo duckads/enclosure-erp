@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class ExternalMemberDto extends Option {
+public class ExternalCompany extends Option {
     private Long seq;
     private String externalMemberNm;
     private String externalMemberOption;

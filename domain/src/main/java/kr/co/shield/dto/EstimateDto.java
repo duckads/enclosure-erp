@@ -1,6 +1,5 @@
 package kr.co.shield.dto;
 
-import kr.co.shield.domain.EstimateDtl;
 import kr.co.shield.ext.Option;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +15,7 @@ import java.util.List;
 @ToString
 public class EstimateDto extends Option {
 	
-	private int seq;
+	private Long seq;
 	private String estimateCode;
 	private String estimateNm;
 	private String estimateOption;
@@ -36,5 +35,5 @@ public class EstimateDto extends Option {
 		this.estimateOption = option;
 	}
 
-	private List<EstimateDtl> estimateDtl;
+	private List<EstimateDtlDto> estimateDtl;
 }

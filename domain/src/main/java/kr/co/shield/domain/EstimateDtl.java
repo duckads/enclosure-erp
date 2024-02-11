@@ -2,15 +2,16 @@ package kr.co.shield.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import kr.co.shield.dto.EstimateDtlDto;
-import kr.co.shield.dto.EstimateDto;
+import kr.co.shield.dto.*;
 import kr.co.shield.ext.Option;
+import kr.co.shield.ext.ProductFormConverterJson;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class EstimateDtl extends Option {
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int seq;
+	private Long seq;
 	@Column(name= "prodcut_size") // 규격
 	private String productSize;
 	@Column(name= "product_quantity") //수량
@@ -40,13 +41,18 @@ public class EstimateDtl extends Option {
 	@Column(name= "prodcut_note") //비고
 	private String productNote;
 
-	@Column(name= "material_cost", columnDefinition = "TEXT") // 재료비
-	private String materialCost;
-	@Column(name= "labor_cost", columnDefinition = "TEXT") // 노무비
-	private String laborCost;
-	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 노무비
-	private String overheadCost;
-
+	@Column(name= "delivery_cost", columnDefinition = "TEXT") // 납품비 (납품)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> deliveryCost;
+	@Column(name= "material_cost", columnDefinition = "TEXT") // 재료비 (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> materialCost;
+	@Column(name= "labor_cost", columnDefinition = "TEXT") // 노무비  (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> laborCost;
+	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 경비비  (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> overheadCost;
 
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
@@ -81,6 +87,7 @@ public class EstimateDtl extends Option {
 				.productTp(this.productTp)
 				.productOption(this.productOption)
 				.productNote(this.productNote)
+				.deliveryCost(this.deliveryCost)
 				.materialCost(this.materialCost)
 				.laborCost(this.laborCost)
 				.overheadCost(this.overheadCost)

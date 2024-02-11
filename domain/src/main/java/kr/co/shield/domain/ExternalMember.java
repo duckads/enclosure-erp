@@ -20,7 +20,7 @@ public class ExternalMember extends Option {
     @Column(name= "seq", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int seq;
+    private Long seq;
     @Column(name= "external_member_nm", length = 256, nullable = false)
     @ColumnDefault("''")
     private String externalMemberNm;

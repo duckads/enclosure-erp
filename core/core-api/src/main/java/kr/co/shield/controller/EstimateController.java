@@ -36,10 +36,6 @@ public class EstimateController {
     public ResponseEntity<EstimateDto> get(HttpServletRequest request, @PathVariable(required = true, name = "id") final String id) {
         EstimateDto rtnObj = null;
 
-        EstimateDto user = (EstimateDto)request.getAttribute(ShieldProperty.TKN_USER);
-
-        Map<String, Object> props = Map.of("id", id);
-
         rtnObj = this.estimateService.findEstimate(Integer.parseInt(id));
 
         return ResponseEntity.ok(rtnObj);

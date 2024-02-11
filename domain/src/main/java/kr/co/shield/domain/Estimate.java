@@ -2,6 +2,7 @@ package kr.co.shield.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import kr.co.shield.dto.EstimateDtlDto;
 import kr.co.shield.dto.EstimateDto;
 import kr.co.shield.ext.Option;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.hibernate.annotations.ColumnDefault;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -23,7 +25,7 @@ public class Estimate extends Option {
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int seq;
+	private Long seq;
 	@Column(name= "estimate_code", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String estimateCode;
@@ -61,12 +63,16 @@ public class Estimate extends Option {
 	
 	public EstimateDto getDto() {
 
+		List<EstimateDtlDto> estimateDtlDtos = this.estimateDtl.stream()
+				.map(EstimateDtl::getDto)
+				.collect(Collectors.toList());
+
 		return EstimateDto.builder()
 				.seq(this.seq)
 				.estimateCode(this.estimateCode)
 				.estimateNm(this.estimateNm)
 				.estimateOption(this.estimateOption)
-				.estimateDtl(this.estimateDtl)
+				.estimateDtl(estimateDtlDtos)
 				.estimateNote(this.estimateNote)
 				.producerSeq(this.producerSeq)
 				.memberSeq(this.memberSeq)
