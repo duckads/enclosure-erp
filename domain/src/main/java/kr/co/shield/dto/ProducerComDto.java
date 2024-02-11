@@ -1,5 +1,12 @@
 package kr.co.shield.dto;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Builder
+@Getter
+@Setter
 public class ProducerComDto {
     private String name; //회사명
     private String phone; //회사 전화

@@ -3,6 +3,7 @@ package kr.co.shield.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import kr.co.shield.dto.*;
+import kr.co.shield.ext.JpaConverterJson;
 import kr.co.shield.ext.Option;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
-@Table(name = "order")
+@Table(name = "orders")
 @ToString
 public class Order extends Option {
 	
@@ -36,34 +37,18 @@ public class Order extends Option {
 	@Column(name= "order_note", columnDefinition = "TEXT")
 	private String orderNote;
 
-	@Column(name= "supply_com_nm")
-	private String supplyComNm;//수주처 회사 명
-	@Column(name= "supply_com_phone")
-	private String supplyComPhone;//수주처 회사 전화 번호
-	@Column(name= "supply_com_fax")
-	private String supplyComFax; //수주처 회사 팩스
-	@Column(name= "supply_com_email")
-	private String supplyComEmail; //수주처 회사 이메일
-
-	@Column(name= "supply_mgr_nm")
-	private String supplyMgrNm; //수주처 담당자 이름
-	@Column(name= "supply_mgr_phone")
-	private String supplyMgrPhone; //수주처 담당자 전화번호
-	@Column(name= "supply_mgr_email")
-	private String supplyMgrEmail; //수주처 담당자 이메일
-
-
+	@Column(name="supply_com", columnDefinition = "TEXT")
+	@Convert(converter = JpaConverterJson.class)
+	private SupplyComDto supplyCom;
+	@Column(name="supply_mgr", columnDefinition = "TEXT")
+	@Convert(converter = JpaConverterJson.class)
+	private SupplyMgrDto supplyMgr;
 	@Column(name= "producer_seq")
 	private int producerSeq; // 공급자 정보 (거의 안 지워지기 때문에)
 
-
-	@Column(name= "estimate_mgr_nm")
-	private String estimateMgrNm; //견적 담당자
-	@Column(name= "estimate_mgr_phone")
-	private String estimateMgrPhone; //견적 전화번호
-	@Column(name= "estimate_mgr_email")
-	private String estimateMgrEmail; //견적 이메일
-
+	@Column(name="estimate_mgr", columnDefinition = "TEXT")
+	@Convert(converter = JpaConverterJson.class)
+	private EstimateMgrDto estimateMgrDto;
 	@Column(name= "member_seq")
 	private int memberSeq;
 	@Column(name= "act_st", length = 6, nullable = false)
@@ -102,7 +87,7 @@ public class Order extends Option {
 				.orderOption(this.orderOption)
 				.orderDtl(orderDtlDtos)
 				.orderNote(this.orderNote)
-				.producerCom(new ProducerComDto())
+				.producerCom(null)
 				.memberSeq(this.memberSeq)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
