@@ -10,7 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CodeDtlDto {
-	
 	private String cdDtlNo;
 	private String cdNo;
 	private String cdDtlAlias;

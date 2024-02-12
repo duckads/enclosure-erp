@@ -26,9 +26,9 @@ public class Company extends Option {
     private String companyNm;
     @Column(name= "company_option", columnDefinition = "TEXT")
     private String companyOption;
-    @Column(name= "company_tp", length = 64, nullable = false)
-    @ColumnDefault("''")
-    private String companyTp;
+    @Column(name= "manager_member_seq", nullable = false)
+    @ColumnDefault("'0'")
+    private int managerMemberSeq;
     @Column(name= "act_st", length = 6, nullable = false)
     @ColumnDefault("''")
     private String actSt;
@@ -56,7 +56,7 @@ public class Company extends Option {
                 .seq(this.seq)
                 .companyNm(this.companyNm)
                 .companyOption(this.companyOption)
-                .companyTp(this.companyTp)
+                .managerMemberSeq(this.managerMemberSeq)
                 .actSt(this.actSt)
                 .regDt(this.regDt)
                 .updDt(this.updDt)

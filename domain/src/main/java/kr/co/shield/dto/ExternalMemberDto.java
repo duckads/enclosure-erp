@@ -13,13 +13,14 @@ import java.util.Date;
 @Setter
 @ToString
 public class ExternalMemberDto extends Option {
-    private int seq;
+    private Long seq;
     private String externalMemberNm;
     private String externalMemberOption;
     private String externalMemberTp;
     private String actSt;
     private Date regDt;
     private Date updDt;
+    private int companySeq;
 
     @Override
     protected String getOption() {

@@ -24,6 +24,7 @@ public class MemberDto extends Option {
 	private String actSt;
 	private Date regDt;
 	private Date updDt;
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {

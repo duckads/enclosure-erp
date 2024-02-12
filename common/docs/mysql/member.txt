@@ -1,0 +1,8 @@
+INSERT INTO member (seq, member_id, member_nm, member_option, member_pw, act_st, reg_dt, upd_dt, company_seq)
+VALUES (1, 'koon', '안성군', '{"phone":"01032439515","email":"koon@naver.com"}', '$2a$10$24n0xERjyyxO1leAiu3DeuEQOkyHjE.coEzEXZygmVCg.QNOJt7Hq','201001', NOW(), NOW(), 1);
+
+INSERT INTO member (seq, member_id, member_nm, member_option, member_pw, act_st, reg_dt, upd_dt, company_seq)
+VALUES (2, 'jin', '최경진', '{"phone":"01032439515","email":"koon@naver.com"}', '$2a$10$24n0xERjyyxO1leAiu3DeuEQOkyHjE.coEzEXZygmVCg.QNOJt7Hq','201001', NOW(), NOW(), 1);
+
+INSERT INTO member (seq, member_id, member_nm, member_option, member_pw, act_st, reg_dt, upd_dt, company_seq)
+VALUES (3, 'jinchoi', '최혁진', '{"phone":"01032439515","email":"koon@naver.com"}', '$2a$10$24n0xERjyyxO1leAiu3DeuEQOkyHjE.coEzEXZygmVCg.QNOJt7Hq','201001', NOW(), NOW(), 1);

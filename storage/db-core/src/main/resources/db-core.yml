@@ -2,9 +2,9 @@ spring:
   datasource: ## main db
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://${DB_SERVER:192.168.0.58}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
-      username: ${DB_USERNAME:duckads}
-      password: ${DB_PASSWORD:duckads}
+      jdbc-url: jdbc:mysql://${DB_SERVER:localhost}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
+      username: ${DB_USERNAME:root}
+      password: ${DB_PASSWORD:1234}
       connection-test-query: select 1 from dual
       connection-timeout: 20000
       keepalive-time: 300000
@@ -18,7 +18,7 @@ spring:
     generate-ddl: true # 해당을 설정해줘야 정상 동작 함 -> 옵션 찾느라 고생 좀 함
     properties:
       hibernate:
-        show_sql: true
+        show_sql: false
         format_sql: true
     hibernate:
       ddl-auto: none # create create-drop update validate none

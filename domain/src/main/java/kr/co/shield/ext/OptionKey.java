@@ -88,7 +88,8 @@ public interface OptionKey {
 	String AGENCY_issue_biz_name                            = "biz_name";                         // 종목
 	String AGENCY_issue_biz_photo                           = "biz_photo";                        // 사업자등록증
 	String AGENCY_issue_bank_photo                          = "bank_photo";                       // 통장사본
-	
+	String AGENCY_first_guide                               = "first_guide";                      // 최초 가이드 확인 여부
+
 	String AGENCY_APP_service_dt                            = "service_dt";
 	
 	String AGGREGATION_description                          = "description";
