@@ -2,15 +2,16 @@ package kr.co.shield.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import kr.co.shield.dto.EstimateDtlDto;
-import kr.co.shield.dto.EstimateDto;
+import kr.co.shield.dto.*;
 import kr.co.shield.ext.Option;
+import kr.co.shield.ext.ProductFormConverterJson;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class EstimateDtl extends Option {
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int seq;
+	private Long seq;
 	@Column(name= "prodcut_size") // 규격
 	private String productSize;
 	@Column(name= "product_quantity") //수량
@@ -33,21 +34,23 @@ public class EstimateDtl extends Option {
 	private int productPrice;
 	@Column(name= "prodcut_supply_price") //공급가액
 	private Long productSupplyPrice;
-	@Column(name= "prodcut_tp")
-	private String productTp;
-	@Column(name= "prodcut_option") //비고
+	@Column(name= "prodcut_option") //옵션
 	private String productOption;
 	@Column(name= "prodcut_note") //비고
 	private String productNote;
 
-	@Column(name= "material_cost", columnDefinition = "TEXT") // 재료비
-	private String materialCost;
-	@Column(name= "labor_cost", columnDefinition = "TEXT") // 노무비
-	private String laborCost;
-	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 노무비
-	private String overheadCost;
-
-
+	@Column(name= "material_cost", columnDefinition = "TEXT") // 재료비 (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> materialCosts;
+	@Column(name= "labor_cost", columnDefinition = "TEXT") // 노무비  (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> laborCosts;
+	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 경비비  (공사)
+	@Convert(converter = ProductFormConverterJson.class)
+	private List<ProductFormDto> overheadCosts;
+	@Column(name= "estimate_tp", length = 256, nullable = false)
+	@ColumnDefault("''")
+	private String estimateTp;
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
 	private String actSt;
@@ -59,6 +62,8 @@ public class EstimateDtl extends Option {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
+	@Column(name= "company_seq", nullable = false)
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {
@@ -78,12 +83,12 @@ public class EstimateDtl extends Option {
 				.productUnit(this.productUnit)
 				.productPrice(this.productPrice)
 				.productSupplyPrice(this.productSupplyPrice)
-				.productTp(this.productTp)
 				.productOption(this.productOption)
 				.productNote(this.productNote)
-				.materialCost(this.materialCost)
-				.laborCost(this.laborCost)
-				.overheadCost(this.overheadCost)
+				.materialCosts(this.materialCosts)
+				.laborCosts(this.laborCosts)
+				.overheadCosts(this.overheadCosts)
+				.estimateTp(this.estimateTp)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)

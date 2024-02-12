@@ -18,10 +18,10 @@ spring:
     generate-ddl: true # 해당을 설정해줘야 정상 동작 함 -> 옵션 찾느라 고생 좀 함
     properties:
       hibernate:
-        show_sql: true
+        show_sql: false
         format_sql: true
     hibernate:
-      ddl-auto: create-drop # create create-drop update validate none
+      ddl-auto: none # create create-drop update validate none
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
   messages:
@@ -30,3 +30,5 @@ spring:
     cache-duration: 3
     encoding: UTF-8
     fallback-to-system-locale: false
+
+

@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface ShEstimateDtlTableRepository extends JpaRepository<LegacyEstimateDtlTable, Integer>, JpaSpecificationExecutor<LegacyEstimateDtlTable> {
 
-   List<LegacyEstimateDtlTable> findByEstimateCode(@Param("estimateCode") String estimateCode);
+    List<LegacyEstimateDtlTable> findByEstimateCode(@Param("estimateCode") String estimateCode);
 }

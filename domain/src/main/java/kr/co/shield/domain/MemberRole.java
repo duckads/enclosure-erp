@@ -25,7 +25,6 @@ public class MemberRole {
 	@Column(name= "role_seq", nullable = false)
 	@ColumnDefault("'0'")
 	private int roleSeq;
-	
 	public MemberRoleDto getDto() {
 		return MemberRoleDto.builder()
 				.seq(this.seq)

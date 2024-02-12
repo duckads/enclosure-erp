@@ -144,7 +144,9 @@ public class ShieldProperty {
 	public static final String RK_REFINER_PATH_UPLOAD_account_stat                                  = "/account_stat/";
 	public static final String RK_REFINER_PATH_UPLOAD_keyword_util                                  = "/keyword_util/";
 	public static final String RK_REFINER_PATH_UPLOAD_profile_photo                                 = "/profile_photo/";
-	public static final String[] RK_REFINER_PATH_UPLOADs                                            = { RK_REFINER_PATH_UPLOAD_account_bulk, RK_REFINER_PATH_UPLOAD_account_stat, RK_REFINER_PATH_UPLOAD_keyword_util, RK_REFINER_PATH_UPLOAD_profile_photo };
+
+	public static final String RK_REFINER_PATH_UPLOAD_issue_photo                                   = "/issue_photo/";
+	public static final String[] RK_REFINER_PATH_UPLOADS                                            = { RK_REFINER_PATH_UPLOAD_account_bulk, RK_REFINER_PATH_UPLOAD_account_stat, RK_REFINER_PATH_UPLOAD_keyword_util, RK_REFINER_PATH_UPLOAD_profile_photo, RK_REFINER_PATH_UPLOAD_issue_photo };
 	
 	// supplier
 	public static final String RK_SUPPLIER_prefix                                                   = "gp_";

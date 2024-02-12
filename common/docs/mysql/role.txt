@@ -1,0 +1,13 @@
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('1', 'super', '{"title":"super_admin","description":"super admin"}', now());
+
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('2', 'admin', '{"title":"admin","description":"admin"}', now());
+
+-- 처음 회사와 함께 매니저 회원 가입용 (기업 정보 수정 + 결제 + 직원 관리) = 다수의 매니저 멤버 가능
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('3', 'manager_member', '{"title":"manager_member","description":"manager_member"}', now());
+
+-- 일반 멤버 -> ( 수정 및 읽기만 가능, 직원 관리 메뉴 접근 불가)
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('4', 'member', '{"title":"member","description":"member"}', now());

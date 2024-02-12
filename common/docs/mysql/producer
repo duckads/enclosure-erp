@@ -1,0 +1,2 @@
+INSERT INTO producer (seq, producer_nm, producer_option, act_st, reg_dt, upd_dt, company_seq)
+VALUES (1, '실드 주식회사', '{"phone":"02-2269-1233","fax":"02-2285-1236","addresss":"경기도 양주시 백석읍 중앙로 287","sector":"제조업,건설업 외","type":"건설기자재,방음벽 외"}', '201001', now(), now(), 1);

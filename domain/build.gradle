@@ -2,9 +2,11 @@
 dependencies {
     implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.1.0'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.15.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
     implementation project(':support')
     compileOnly group: 'org.hibernate', name: 'hibernate-core', version: '6.0.0.Alpha2'
     implementation group: 'org.springframework', name: 'spring-web', version: '4.3.11.RELEASE'
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }

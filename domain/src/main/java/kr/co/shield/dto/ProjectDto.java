@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
-import java.util.List;
 
 @Builder
 @Getter
@@ -15,7 +14,7 @@ import java.util.List;
 @ToString
 public class ProjectDto extends Option {
 	
-	private int seq;
+	private Long seq;
 	private String projectCode;
 	private String projectNm;
 	private String constructionNm;
@@ -26,6 +25,7 @@ public class ProjectDto extends Option {
 	private String actSt;
 	private Date regDt;
 	private Date updDt;
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {

@@ -20,7 +20,7 @@ public class Project extends Option {
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int seq;
+	private Long seq;
 	@Column(name= "project_code", length = 256, nullable = false)
 	@ColumnDefault("''")
 	private String projectCode;
@@ -50,6 +50,8 @@ public class Project extends Option {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
+	@Column(name= "company_seq", nullable = false)
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {

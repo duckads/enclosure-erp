@@ -1,6 +1,6 @@
 rootProject.name = 'enclosure-erp'
 
-def subModule = ["common", "core:auth-api", "core:core-api", "domain","storage:db-core", "support"]
+def subModule = ["common", "core:core-api", "domain","storage:db-core", "support"]
 
 def GRADLE_TEXT = """
     dependencies {
