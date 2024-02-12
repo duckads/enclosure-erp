@@ -12,27 +12,28 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class ProjectDto extends Option {
+public class QnaDto extends Option {
 	
-	private Long seq;
-	private String projectCode;
-	private String projectNm;
-	private String constructionNm;
-	private String siteLocation;
-	private String projectOption;
-	private String siteManager;
-	private String shieldSiteManager;
-	private String actSt;
+	private int seq;
+	private String qnaTp;
+	private String qnaOption;
+	private String subject;
+	private String question;
+	private String answering;
+	private String qnaSt;
 	private Date regDt;
 	private Date updDt;
 	private int companySeq;
+	private int memberSeq;
+	private int parentSeq;
 	
 	@Override
 	protected String getOption() {
-		return projectOption;
+		return qnaOption;
 	}
 	@Override
 	protected void setOption(String option) {
-		this.projectOption = option;
+		this.qnaOption = option;
 	}
+	
 }

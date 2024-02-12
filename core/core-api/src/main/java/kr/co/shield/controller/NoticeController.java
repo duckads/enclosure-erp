@@ -1,4 +1,4 @@
 package kr.co.shield.controller;
 
-public class OrderController {
+public class NoticeController {
 }

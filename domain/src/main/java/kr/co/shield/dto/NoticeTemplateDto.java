@@ -12,27 +12,26 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class ProjectDto extends Option {
+public class NoticeTemplateDto extends Option {
 	
-	private Long seq;
-	private String projectCode;
-	private String projectNm;
-	private String constructionNm;
-	private String siteLocation;
-	private String projectOption;
-	private String siteManager;
-	private String shieldSiteManager;
+	private int seq;
+	private String templateNm;
+	private String templateTag;
+	private String templateOption;
+	private String subject;
+	private String content;
+	private String channelTp;
 	private String actSt;
 	private Date regDt;
 	private Date updDt;
-	private int companySeq;
 	
 	@Override
 	protected String getOption() {
-		return projectOption;
+		return templateOption;
 	}
 	@Override
 	protected void setOption(String option) {
-		this.projectOption = option;
+		this.templateOption = option;
 	}
+	
 }
