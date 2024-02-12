@@ -22,9 +22,11 @@ public class EstimateDto extends Option {
 	private String estimateNote;
 	private int producerSeq;
 	private int memberSeq;
+	private String estimateTp;
 	private String actSt;
 	private Date regDt;
 	private Date updDt;
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {

@@ -1,0 +1,8 @@
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('1', 'super', '{"title":"super_admin","description":"super admin"}', now());
+
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('2', 'admin', '{"title":"admin","description":"admin"}', now());
+
+INSERT INTO role (seq, role_nm, role_option, reg_dt)
+VALUES ('3', 'member', '{"title":"member","description":"member"}', now());

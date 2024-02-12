@@ -39,16 +39,19 @@ public class Order extends Option {
 
 	@Column(name="supply_com", columnDefinition = "TEXT")
 	@Convert(converter = JpaConverterJson.class)
-	private SupplyComDto supplyCom;
+	private BusinessDealDTO supplyCom;
+
 	@Column(name="supply_mgr", columnDefinition = "TEXT")
 	@Convert(converter = JpaConverterJson.class)
-	private SupplyMgrDto supplyMgr;
+	private BusinessDealMgrDto supplyMgr;
+
 	@Column(name= "producer_seq")
 	private int producerSeq; // 공급자 정보 (거의 안 지워지기 때문에)
 
-	@Column(name="estimate_mgr", columnDefinition = "TEXT")
+	@Column(name="estimate_mgr", columnDefinition = "TEXT") //견적 담당자
 	@Convert(converter = JpaConverterJson.class)
 	private EstimateMgrDto estimateMgrDto;
+
 	@Column(name= "member_seq")
 	private int memberSeq;
 	@Column(name= "act_st", length = 6, nullable = false)

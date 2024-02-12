@@ -12,7 +12,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Getter
 @Setter
-@Table(name = "tb_code_dtl")
+@Table(name = "code_dtl")
 @ToString
 public class CodeDtl {
 	

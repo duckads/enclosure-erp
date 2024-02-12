@@ -52,7 +52,7 @@ public class OrderDtl {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
-
+	@Column(name= "company_seq", nullable = false)
 	private int companySeq;
 
 	public OrderDtlDto getDto() {

@@ -21,13 +21,11 @@ public class EstimateDtlDto extends Option {
 	private String productUnit;
 	private int productPrice;
 	private Long productSupplyPrice;
-	private String productTp;
 	private String productOption;
 	private String productNote;
-	private List<ProductFormDto> deliveryCost;//공사비
-	private List<ProductFormDto> materialCost;//재료비
-	private List<ProductFormDto> laborCost;//노무비
-	private List<ProductFormDto> overheadCost;//경비비
+	private List<ProductFormDto> materialCosts;//재료비
+	private List<ProductFormDto> laborCosts;//노무비
+	private List<ProductFormDto> overheadCosts;//경비비
 	private String actSt;
 	private Date regDt;
 	private Date updDt;

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Builder
 public class EstimateMgrDto {
      // 견적 담당자( 담당자, 전화번호, 이메일)
-    private String managerNm;
-    private String managerPhone;
-    private String managerEmail;
+    private String name;
+    private String phone;
+    private String email;
 }

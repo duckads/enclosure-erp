@@ -2,7 +2,7 @@ package kr.co.shield.domain;
 
 import jakarta.persistence.*;
 import kr.co.shield.dto.CompanyDto;
-import kr.co.shield.dto.ExternalMemberDto;
+import kr.co.shield.dto.ProducerDto;
 import kr.co.shield.ext.Option;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,21 +14,18 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Table(name = "external_member")
+@Table(name = "producer") //공급자
 @ToString
-public class ExternalMember extends Option {
+public class Producer extends Option {
     @Column(name= "seq", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long seq;
-    @Column(name= "external_member_nm", length = 256, nullable = false)
+    private int seq;
+    @Column(name= "producer_nm", length = 256, nullable = false)
     @ColumnDefault("''")
-    private String externalMemberNm;
-    @Column(name= "external_member_option", columnDefinition = "TEXT")
-    private String externalMemberOption;
-    @Column(name= "external_member_tp", length = 64, nullable = false)
-    @ColumnDefault("''")
-    private String externalMemberTp;
+    private String producerNm;
+    @Column(name= "producer_option", columnDefinition = "TEXT")
+    private String producerOption;
     @Column(name= "act_st", length = 6, nullable = false)
     @ColumnDefault("''")
     private String actSt;
@@ -45,23 +42,23 @@ public class ExternalMember extends Option {
 
     @Override
     protected String getOption() {
-        return externalMemberOption;
+        return producerOption;
     }
     @Override
     protected void setOption(String option) {
-        this.externalMemberOption = option;
+        this.producerOption = option;
     }
 
-    public ExternalMemberDto getDto() {
+    public ProducerDto getDto() {
 
-        return ExternalMemberDto.builder()
+        return ProducerDto.builder()
                 .seq(this.seq)
-                .externalMemberNm(this.externalMemberNm)
-                .externalMemberOption(this.externalMemberOption)
-                .externalMemberTp(this.externalMemberTp)
+                .producerNm(this.producerNm)
+                .producerOption(this.producerOption)
                 .actSt(this.actSt)
                 .regDt(this.regDt)
                 .updDt(this.updDt)
+                .companySeq(this.companySeq)
                 .build();
     }
 }

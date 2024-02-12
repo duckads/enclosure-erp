@@ -34,25 +34,20 @@ public class EstimateDtl extends Option {
 	private int productPrice;
 	@Column(name= "prodcut_supply_price") //공급가액
 	private Long productSupplyPrice;
-	@Column(name= "prodcut_tp")
-	private String productTp;
-	@Column(name= "prodcut_option") //비고
+	@Column(name= "prodcut_option") //옵션
 	private String productOption;
 	@Column(name= "prodcut_note") //비고
 	private String productNote;
 
-	@Column(name= "delivery_cost", columnDefinition = "TEXT") // 납품비 (납품)
-	@Convert(converter = ProductFormConverterJson.class)
-	private List<ProductFormDto> deliveryCost;
 	@Column(name= "material_cost", columnDefinition = "TEXT") // 재료비 (공사)
 	@Convert(converter = ProductFormConverterJson.class)
-	private List<ProductFormDto> materialCost;
+	private List<ProductFormDto> materialCosts;
 	@Column(name= "labor_cost", columnDefinition = "TEXT") // 노무비  (공사)
 	@Convert(converter = ProductFormConverterJson.class)
-	private List<ProductFormDto> laborCost;
+	private List<ProductFormDto> laborCosts;
 	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 경비비  (공사)
 	@Convert(converter = ProductFormConverterJson.class)
-	private List<ProductFormDto> overheadCost;
+	private List<ProductFormDto> overheadCosts;
 
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
@@ -65,6 +60,8 @@ public class EstimateDtl extends Option {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
+	@Column(name= "company_seq", nullable = false)
+	private int companySeq;
 	
 	@Override
 	protected String getOption() {
@@ -84,13 +81,11 @@ public class EstimateDtl extends Option {
 				.productUnit(this.productUnit)
 				.productPrice(this.productPrice)
 				.productSupplyPrice(this.productSupplyPrice)
-				.productTp(this.productTp)
 				.productOption(this.productOption)
 				.productNote(this.productNote)
-				.deliveryCost(this.deliveryCost)
-				.materialCost(this.materialCost)
-				.laborCost(this.laborCost)
-				.overheadCost(this.overheadCost)
+				.materialCosts(this.materialCosts)
+				.laborCosts(this.laborCosts)
+				.overheadCosts(this.overheadCosts)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)

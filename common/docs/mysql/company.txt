@@ -1,0 +1,2 @@
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('101', 'COMPANY_TP', '회사 종류', '회사 종류');

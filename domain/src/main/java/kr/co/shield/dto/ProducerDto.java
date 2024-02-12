@@ -12,11 +12,10 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class ExternalMemberDto extends Option {
-    private Long seq;
-    private String externalMemberNm;
-    private String externalMemberOption;
-    private String externalMemberTp;
+public class ProducerDto extends Option {  //공급자
+    private int seq;
+    private String producerNm;
+    private String producerOption;
     private String actSt;
     private Date regDt;
     private Date updDt;
@@ -24,10 +23,10 @@ public class ExternalMemberDto extends Option {
 
     @Override
     protected String getOption() {
-        return externalMemberOption;
+        return producerOption;
     }
     @Override
     protected void setOption(String option) {
-        this.externalMemberOption = option;
+        this.producerOption = option;
     }
 }

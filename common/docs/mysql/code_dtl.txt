@@ -1,0 +1,82 @@
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('101001', 'COMPANY_TP_CUSTOMER', '고객사 회사', '회사 종류', '101');
+
+-- 외부 회사
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('102001', 'EXTERNAL_COM_TP_CUSTOMER', '고객처', '고객처', '102');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('102002', 'EXTERNAL_COM_TP_SUPPLY', '매입처', '매입처', '102');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('102003', 'EXTERNAL_COM_TP_COOPERATIVE', '협력 소장', '협력 소장', '102');
+
+-- 외부 회사 직원 종류
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('103001', 'EXTERNAL_MEMBER_TP_CUSTOMER', '고객처 직원', '고객처 직원', '103');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('103002', 'EXTERNAL_MEMBER_TP_SUPPLY', '매입처 직원', '매입처 직원', '103');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('103003', 'EXTERNAL_MEMBER_TP_COOPERATIVE', '협력 직원', '협력 직원', '103');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('104001', 'ESTIMATE_TP_CONSTRUCTION', '공사', '공사', '104');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('104002', 'ESTIMATE_TP_DELIVERY', '납품', '납품', '104');
+
+
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('105001', 'CONSTRUCT_TP_DELIVERY_COST', '납품비', '납품비', '105');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('105002', 'CONSTRUCT_TP_DELIVERY_MATERIAL_COST', '재료비', '재료비', '105');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('105003', 'CONSTRUCT_TP_LABOR_COST', '노무비', '노무비', '105');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('105004', 'CONSTRUCT_TP_OVERHAED_COST', '경비비', '경비비', '105');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('106001', 'CONSTRUCT_INSTALL_TP_PIPE', '파이프', '파이프', '106');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('106002', 'CONSTRUCT_INSTALL_TP_PANEL', '방음판', '방음판', '106');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('107001', 'QUOTATION_PAY_TP_ADVANCE', '선금', '선금', '107');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('107002', 'QUOTATION_PAY_TP_LATER', '후불', '후불', '107');
+
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('108001', 'INVOICE_FORM_TP_ESTIMATE', '견적서', '견적서', '108');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('108001', 'INVOICE_FORM_TP_ORDER', '견적서', '견적서', '108');
+
+
+-- 201
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201001', 'ACTIVE_ST_Y', '사용중', '사용중', '201');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201002', 'ACTIVE_ST_N', '사용중지', '사용중지', '201');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201003', 'ACTIVE_ST_F', '사용종료', '사용종료', '201');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201004', 'ACTIVE_ST_W', '사용대기', '사용대기', '201');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201005', 'ACTIVE_ST_X', '사용불가', '사용불가', '201');
+
+INSERT INTO code_dtl (cd_dtl_no, cd_dtl_alias, cd_dtl_desc, cd_dtl_nm, cd_no)
+VALUES ('201006', 'ACTIVE_ST_D', '사용불가', '삭제요청', '201');
+

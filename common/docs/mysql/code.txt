@@ -1,0 +1,36 @@
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('101', 'COMPANY_TP', '회사 종류', '회사 종류');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('102', 'EXTERNAL_COM_TP', '외부 회사 종류', '외부 회사 종류');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('103', 'EXTERNAL_MEMBER_TP', '외부 회사 직원 종류', '외부 회사 직원 종류');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('104', 'ESTIMATE_TP', '공사 납품 구분 정보', '공사 납품 구분 정보');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('105', 'CONSTRUCT_TP', '재료비, 노무비, 경비비', '공사 견적 구분 정보');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('106', 'CONSTRUCT_INSTALL_TP', '설치 타입 구분 정보', '설치 타입 구분 정보');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('107', 'QUOTATION_PAY_TP', '견적서 결제 정보', '견적서 결제 정보');
+
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('108', 'INVOICE_FORM_TP', '거래서 구분 정보', '거래서 구분 정보');
+
+
+-- 201
+INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
+VALUES ('201', 'ACTIVE_ST', '사용 상태', '사용 상태');
+
+
+
+
+
+
+
+

@@ -19,8 +19,8 @@ public class OrderDto extends Option {
     private String orderNm; // 발주 명
     private String orderOption; // 발주 옵션 ( 발주일자, 납기일자, 현장위치, 현장 담당)
     private String orderNote; // 비고, 메모
-    private SupplyComDto supplyCom; // 수주처(회사명, 전화, 팩스, 회사 이메일)
-    private SupplyMgrDto supplyMgr; // 수주처 담당자(성함, 전화번호, 이메일)
+    private BusinessDealDTO supplyCom; // 수주처(회사명, 전화, 팩스, 회사 이메일)
+    private BusinessDealMgrDto supplyMgr; // 수주처 담당자(성함, 전화번호, 이메일)
     private ProducerComDto producerCom; // 공급자 (회사명, 회사전화, 회사 주소, 회사 팩스, 회사 업태 회사 종목, 회사 이메일
     private EstimateMgrDto estimateMgr; // 견적 담당자( 담당자, 전화번호, 이메일)
     private int memberSeq; // 저장 및 수정한 사람
