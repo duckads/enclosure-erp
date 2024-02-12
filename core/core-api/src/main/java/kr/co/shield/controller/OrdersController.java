@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.shield.dto.OrderDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import kr.co.shield.common.ShieldProperty;
 import kr.co.shield.dto.MemberDto;
 import kr.co.shield.dto.OrdersDto;
-import kr.co.shield.dto.OrderDto;
 import kr.co.shield.dto.ResponseDto;
 import kr.co.shield.service.inf.OrdersService;
 import lombok.RequiredArgsConstructor;

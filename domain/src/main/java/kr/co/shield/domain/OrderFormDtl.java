@@ -3,7 +3,7 @@ package kr.co.shield.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import kr.co.shield.dto.EstimateDtlDto;
-import kr.co.shield.dto.OrderDtlDto;
+import kr.co.shield.dto.OrderFormDtlDto;
 import kr.co.shield.ext.Option;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +15,9 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Table(name = "order_dtl")
+@Table(name = "order_form_dtl")
 @ToString
-public class OrderDtl {
+public class OrderFormDtl {
 	
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,8 +55,8 @@ public class OrderDtl {
 	@Column(name= "company_seq", nullable = false)
 	private int companySeq;
 
-	public OrderDtlDto getDto() {
-		return OrderDtlDto.builder()
+	public OrderFormDtlDto getDto() {
+		return OrderFormDtlDto.builder()
 				.seq(this.seq)
 				.orderCode(this.orderCode)
 				.productNm(this.productNm)
@@ -76,5 +76,5 @@ public class OrderDtl {
 	@ManyToOne
 	@JsonBackReference
 	@JoinColumn(name="order_seq")
-	private Order order;
+	private OrderForm orderForm;
 }

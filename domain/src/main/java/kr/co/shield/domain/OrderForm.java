@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
-@Table(name = "orders")
+@Table(name = "order_form")
 @ToString
-public class Order extends Option {
+public class OrderForm extends Option {
 	
 	@Column(name= "seq", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,13 +77,13 @@ public class Order extends Option {
 		this.orderOption = option;
 	}
 	
-	public OrderDto getDto() {
+	public OrderFormDto getDto() {
 
-		List<OrderDtlDto> orderDtlDtos = this.orderDtl.stream()
-				.map(OrderDtl::getDto) // EstimateDtl을 EstimateDtlDto로 변환
+		List<OrderFormDtlDto> orderDtlDtos = this.orderFormDtl.stream()
+				.map(OrderFormDtl::getDto) // EstimateDtl을 EstimateDtlDto로 변환
 				.collect(Collectors.toList()); // 변환된 요소를 리스트로 수집
 
-		return OrderDto.builder()
+		return OrderFormDto.builder()
 				.seq(this.seq)
 				.orderCode(this.orderCode)
 				.orderNm(this.orderNm)
@@ -99,7 +99,7 @@ public class Order extends Option {
 				.build();
 	}
 
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "orderForm")
 	@JsonManagedReference
-	private List<OrderDtl> orderDtl = new ArrayList<>();
+	private List<OrderFormDtl> orderFormDtl = new ArrayList<>();
 }

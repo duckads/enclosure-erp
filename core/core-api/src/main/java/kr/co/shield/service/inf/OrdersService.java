@@ -2,7 +2,7 @@ package kr.co.shield.service.inf;
 
 import kr.co.shield.dto.MemberDto;
 import kr.co.shield.dto.OrdersDto;
-import kr.co.shield.dto.OrderDto2;
+import kr.co.shield.dto.OrderDto;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +21,6 @@ public interface OrdersService {
 
 	/* Additional */
 	
-	public Map<String, Object> preview(MemberDto user, OrderDto2 orderDto);
+	public Map<String, Object> preview(MemberDto user, OrderDto orderDto);
 	
 }

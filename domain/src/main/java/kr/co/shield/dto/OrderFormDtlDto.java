@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class OrderDtlDto {
+public class OrderFormDtlDto {
     private Long seq;
     private String orderCode; //발주 번호
     private String productNm; //품명
