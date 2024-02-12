@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtils {
-	
+	public static final String DATE_FORMAT_FULL = "yyyy-MM-dd HH:mm:ss";
 	public static <T extends Date> int diff(int field, T t1, T t2) {
 		Calendar c1 = Calendar.getInstance(); c1.setTime(t1);
 		Calendar c2 = Calendar.getInstance(); c2.setTime(t2);

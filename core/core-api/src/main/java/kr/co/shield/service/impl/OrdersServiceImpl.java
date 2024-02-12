@@ -5,14 +5,11 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import kr.co.shield.common.CodeManager;
 import kr.co.shield.common.ShieldProperty;
+import kr.co.shield.dto.*;
 import kr.co.shield.repository.OrdersRepository;
 import kr.co.shield.domain.Orders;
-import kr.co.shield.dto.MemberDto;
-import kr.co.shield.dto.CompanyDto;
-import kr.co.shield.dto.OrdersDto;
 import kr.co.shield.ext.Option;
-import kr.co.shield.dto.OrderDto;
-import kr.co.shield.dto.OrderDto.Product;
+import kr.co.shield.dto.OrderDto2.Product;
 import kr.co.shield.service.inf.OrdersService;
 import kr.co.shield.util.JpaUtil;
 import kr.co.shield.utility.DateUtils;
@@ -190,7 +187,7 @@ public class OrdersServiceImpl implements OrdersService {
 	
 	@Override
 	@Transactional
-	public Map<String, Object> preview(MemberDto user, OrderDto orderDto) {
+	public Map<String, Object> preview(MemberDto user, OrderDto2 orderDto) {
 		Map<String, Object> rtnMap = new HashMap<>();
 		
 		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);

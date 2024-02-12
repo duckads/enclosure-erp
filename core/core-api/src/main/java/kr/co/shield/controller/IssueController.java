@@ -21,7 +21,7 @@ import kr.co.shield.dto.MemberDto;
 import kr.co.shield.dto.IssueDto;
 import kr.co.shield.dto.ResponseDto;
 import kr.co.shield.service.inf.CompanyService;
-import kr.co.shield.utility.FileUtils;
+import kr.co.shield.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping(value = "/issue", produces = MediaType.APPLICATION_JSON_VALUE)
