@@ -48,7 +48,9 @@ public class EstimateDtl extends Option {
 	@Column(name= "overhead_cost", columnDefinition = "TEXT") // 경비비  (공사)
 	@Convert(converter = ProductFormConverterJson.class)
 	private List<ProductFormDto> overheadCosts;
-
+	@Column(name= "estimate_tp", length = 256, nullable = false)
+	@ColumnDefault("''")
+	private String estimateTp;
 	@Column(name= "act_st", length = 6, nullable = false)
 	@ColumnDefault("''")
 	private String actSt;
@@ -86,6 +88,7 @@ public class EstimateDtl extends Option {
 				.materialCosts(this.materialCosts)
 				.laborCosts(this.laborCosts)
 				.overheadCosts(this.overheadCosts)
+				.estimateTp(this.estimateTp)
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)

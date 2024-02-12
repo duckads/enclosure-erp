@@ -26,8 +26,9 @@ public class EstimateDto extends Option {
 	private String actSt;
 	private Date regDt;
 	private Date updDt;
+	private int projectSeq;
 	private int companySeq;
-	
+
 	@Override
 	protected String getOption() {
 		return estimateOption;

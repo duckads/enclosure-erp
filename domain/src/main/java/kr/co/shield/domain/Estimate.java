@@ -68,6 +68,9 @@ public class Estimate extends Option {
 	@ColumnDefault("'2021-01-01 00:00:00'")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updDt;
+	@Column(name= "project_seq", nullable = false)
+	@ColumnDefault("'0'")
+	private int projectSeq;
 	@Column(name= "company_seq", nullable = false)
 	private int companySeq;
 
@@ -99,6 +102,8 @@ public class Estimate extends Option {
 				.actSt(this.actSt)
 				.regDt(this.regDt)
 				.updDt(this.updDt)
+				.projectSeq(this.projectSeq)
+				.companySeq(this.companySeq)
 				.build();
 	}
 

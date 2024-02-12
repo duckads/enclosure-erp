@@ -90,7 +90,7 @@ public class Order extends Option {
 				.orderOption(this.orderOption)
 				.orderDtl(orderDtlDtos)
 				.orderNote(this.orderNote)
-				.producerCom(null)
+				.producer(null)
 				.memberSeq(this.memberSeq)
 				.actSt(this.actSt)
 				.regDt(this.regDt)

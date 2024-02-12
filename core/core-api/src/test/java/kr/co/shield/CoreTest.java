@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @SpringBootTest
 public class CoreTest {
@@ -48,6 +47,11 @@ public class CoreTest {
 
 
     @Test
+    void hello() {
+
+    }
+
+//    @Test
     void insertCompanyAndMember() {
         // 고객 등록
         Company company = new Company();
@@ -115,9 +119,24 @@ public class CoreTest {
             estimate.setCustomerCom(businessDealDTO);
             estimate.setCustomerMgr(businessDealMgrDto);
             estimate.setEstimateMgr(estimateMgrDto);
+            estimate.setActSt(CodeManager.code("ACTIVE_ST_Y"));
+            estimate.setRegDt(new Date());
+            estimate.setUpdDt(new Date());
+
+            //Json key, value 추가
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("expir_dt", legacyEstimate.getEstimateExpri());
+            jsonObject.addProperty("start_dt", legacyEstimate.getEstimateStartdt());
+            jsonObject.addProperty("payment_tp", legacyEstimate.getEstimatePayment());
+            String jsonStr = gson.toJson(jsonObject);
+            estimate.setEstimateOption(jsonStr);
+            estimate.setCompanySeq(1);
+            estimate.setProducerSeq(1);
+
 
             if (legacyEstimate.getEstimateType().equals("DIL")) { //납품인 경우
                 estimate.setEstimateTp(CodeManager.code("ESTIMATE_TP_DELIVERY"));
+                estimateRepository.save(estimate);
                 Optional<List<LegacyEstimateTable>> legacyEstimateTable = shEstimateTableRepository.findByEstimateCode(legacyEstimate.getEstimateCode());
                 for (LegacyEstimateTable estimateTable : legacyEstimateTable.get()) {
                     EstimateDtl estimateDtl = new EstimateDtl();
@@ -126,10 +145,11 @@ public class CoreTest {
                     estimateDtl.setProductUnit(estimateTable.getEstimateTableUnit());
                     estimateDtl.setProductPrice(estimateTable.getEstimateTableUnitPrice() != null ? estimateTable.getEstimateTableUnitPrice() : 0);
                     estimateDtl.setProductSupplyPrice(estimateTable.getEstimateTableSupplyPrice() != null ? estimateTable.getEstimateTableSupplyPrice() : 0);
+                    estimateDtl.setEstimateTp(CodeManager.code("ESTIMATE_TP_DELIVERY"));
                     estimateDtl.setActSt(CodeManager.code("ACTIVE_ST_Y"));
-                    estimateDtl.setMaterialCosts(null); // 재료비
-                    estimateDtl.setLaborCosts(null); // 노무비
-                    estimateDtl.setOverheadCosts(null); // 경비비
+                    estimateDtl.setMaterialCosts(new ArrayList<>()); // 재료비
+                    estimateDtl.setLaborCosts(new ArrayList<>()); // 노무비
+                    estimateDtl.setOverheadCosts(new ArrayList<>()); // 경비비
                     estimateDtl.setEstimate(estimate);
                     estimateDtl.setRegDt(new Date());
                     estimateDtl.setUpdDt(new Date());
@@ -139,6 +159,7 @@ public class CoreTest {
 
             } else { //공사인경우
                 estimate.setEstimateTp(CodeManager.code("ESTIMATE_TP_CONSTRUCTION"));
+                estimateRepository.save(estimate);
                 Optional<List<LegacyEstimateTable>> legacyEstimateTable = shEstimateTableRepository.findByEstimateCode(legacyEstimate.getEstimateCode());
                 for (LegacyEstimateTable estimateTable : legacyEstimateTable.get()) {
                     EstimateDtl estimateDtl = new EstimateDtl();
@@ -182,6 +203,7 @@ public class CoreTest {
                     estimateDtl.setProductUnit(estimateTable.getEstimateTableUnit());
                     estimateDtl.setProductPrice(estimateTable.getEstimateTableUnitPrice() != null ? estimateTable.getEstimateTableUnitPrice() : 0);
                     estimateDtl.setProductSupplyPrice(estimateTable.getEstimateTableSupplyPrice() != null ? estimateTable.getEstimateTableSupplyPrice() : 0);
+                    estimateDtl.setEstimateTp(CodeManager.code("ESTIMATE_TP_CONSTRUCTION"));
                     estimateDtl.setActSt(CodeManager.code("ACTIVE_ST_Y"));
                     estimateDtl.setMaterialCosts(materialCosts); // 재료비
                     estimateDtl.setLaborCosts(laborCosts); // 노무비
@@ -193,22 +215,6 @@ public class CoreTest {
                     estimateDtlRepository.save(estimateDtl);
                 }
             }
-
-            estimate.setActSt(CodeManager.code("ACTIVE_ST_Y"));
-            estimate.setRegDt(new Date());
-            estimate.setUpdDt(new Date());
-
-            //Json key, value 추가
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("expir_dt", legacyEstimate.getEstimateExpri());
-            jsonObject.addProperty("start_dt", legacyEstimate.getEstimateStartdt());
-            jsonObject.addProperty("payment_tp", legacyEstimate.getEstimatePayment());
-            String jsonStr = gson.toJson(jsonObject);
-
-            estimate.setEstimateOption(jsonStr);
-            estimate.setCompanySeq(1);
-            estimate.setProducerSeq(1);
-            estimateRepository.save(estimate);
         }
     }
 }

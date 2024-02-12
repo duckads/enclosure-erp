@@ -16,6 +16,7 @@ public class CompanyDto extends Option {
     private int seq;
     private String companyNm;
     private String companyOption;
+    private int managerMemberSeq;
     private String actSt;
     private Date regDt;
     private Date updDt;

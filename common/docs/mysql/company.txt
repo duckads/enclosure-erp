@@ -1,2 +1,2 @@
-INSERT INTO code (cd_no, cd_alias, cd_desc, cd_nm)
-VALUES ('101', 'COMPANY_TP', '회사 종류', '회사 종류');
+INSERT INTO company (seq, company_nm, company_option, manager_member_seq,act_st, reg_dt, upd_dt)
+VALUES (1, '실드 주식회사', '{"phone":"02-2269-1233","fax":"02-2285-1236","addresss":"경기도 양주시 백석읍 중앙로 287","sector":"제조업,건설업 외","type":"건설기자재,방음벽 외"}', 1,'201001', now(), now());
