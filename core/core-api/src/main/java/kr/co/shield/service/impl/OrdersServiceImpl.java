@@ -44,18 +44,16 @@ public class OrdersServiceImpl implements OrdersService {
 	public List<OrdersDto> findAll(MemberDto user, Map<String, Object> props) {
 		List<OrdersDto> rtnList = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		String userRole = StringUtils.getString(user.getRoles());
 		
 		/* implementation */
 		
-		Integer agencySeq = tknAgency.getSeq();
+		Integer companySeq = tknCompany.getSeq();
 		
-		String adminSeq = StringUtils.getString(props.get("adminSeq"));
+		String memberSeq = StringUtils.getString(props.get("memberSeq"));
 		String orderSt = StringUtils.getString(props.get("orderSt"));
 		if (orderSt.isBlank()) {
 			orderSt = CodeManager.code("ORDER_ST_READY");
@@ -66,19 +64,19 @@ public class OrdersServiceImpl implements OrdersService {
 		
 		Specification<Orders> where = JpaUtil.in(Orders.class, "orderSt", Arrays.asList(orderSt.split(",")));
 		where = where.and(JpaUtil.in(Orders.class, "payTp", Arrays.asList(payTp.split(","))));
-		if (!adminSeq.isBlank()) {
-			where = where.and(JpaUtil.in(Orders.class, "adminSeq", Arrays.asList(adminSeq.split(","))));
+		if (!memberSeq.isBlank()) {
+			where = where.and(JpaUtil.in(Orders.class, "memberSeq", Arrays.asList(memberSeq.split(","))));
 		}
 		if (!StringUtils.getString(props.get("psDate")).isBlank()) {
 			where = where.and(JpaUtil.between(Orders.class, "regDt", DateUtils.parse(psDate, DateUtils.DATE_FORMAT_FULL), DateUtils.parse(peDate, DateUtils.DATE_FORMAT_FULL)));
 		}
-		if ((userRole.indexOf("ROLE_SUPER") > -1 || userRole.indexOf("ROLE_ADMIN") > -1) && props.containsKey("agencySeq")) {
-			String agencySeqs = StringUtils.getString(props.get("agencySeq"));
-			if (!agencySeqs.isBlank()) {
-				where = where.and(JpaUtil.in(Orders.class, "agencySeq", Arrays.asList(agencySeqs.split(","))));
+		if ((userRole.indexOf("ROLE_SUPER") > -1 || userRole.indexOf("ROLE_ADMIN") > -1) && props.containsKey("companySeq")) {
+			String companySeqs = StringUtils.getString(props.get("companySeq"));
+			if (!companySeqs.isBlank()) {
+				where = where.and(JpaUtil.in(Orders.class, "companySeq", Arrays.asList(companySeqs.split(","))));
 			}
 		} else {
-			where = where.and(JpaUtil.equal(Orders.class, "agencySeq", agencySeq));
+			where = where.and(JpaUtil.equal(Orders.class, "companySeq", companySeq));
 		}
 		
 		Sort sort = Sort.by(Direction.DESC, "regDt");
@@ -102,10 +100,8 @@ public class OrdersServiceImpl implements OrdersService {
 	public OrdersDto findOne(MemberDto user, Map<String, Object> props) {
 		OrdersDto rtnObj = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -121,10 +117,8 @@ public class OrdersServiceImpl implements OrdersService {
 	public String create(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -140,10 +134,8 @@ public class OrdersServiceImpl implements OrdersService {
 	public String update(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -171,10 +163,8 @@ public class OrdersServiceImpl implements OrdersService {
 	public String delete(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -190,7 +180,7 @@ public class OrdersServiceImpl implements OrdersService {
 	public Map<String, Object> preview(MemberDto user, OrderDto orderDto) {
 		Map<String, Object> rtnMap = new HashMap<>();
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		
 		// [플랜|추가]
 		String paymentType = orderDto.getPaymentType();
@@ -203,7 +193,7 @@ public class OrdersServiceImpl implements OrdersService {
 		// 주문 상품
 		List<Product> products = orderDto.getProducts();
 		
-		Map<String, Object> contract = (Map<String, Object>)tknAgency.getOption(Option.AGENCY_contract);
+		Map<String, Object> contract = (Map<String, Object>)tknCompany.getOption(Option.AGENCY_contract);
 		
 		// 플랜 결제
 //		if () {

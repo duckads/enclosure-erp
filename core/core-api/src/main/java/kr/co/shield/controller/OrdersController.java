@@ -47,8 +47,8 @@ public class OrdersController {
 
         Map<String, Object> props = new HashMap<>();
 
-        props.put("agencySeq", request.getParameter("agency_seq"));
-        props.put("adminSeq", request.getParameter("admin_seq"));
+        props.put("companySeq", request.getParameter("company_seq"));
+        props.put("memberSeq", request.getParameter("member_seq"));
         props.put("orderSt", request.getParameter("order_st"));
         props.put("payTp", request.getParameter("pay_tp"));
         props.put("psDate", request.getParameter("ps_date"));

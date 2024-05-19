@@ -2,9 +2,9 @@ spring:
   datasource: ## main db
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://${DB_SERVER:localhost}:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
-      username: ${DB_USERNAME:root}
-      password: ${DB_PASSWORD:1234}
+      jdbc-url: jdbc:mysql://192.168.0.57:3306/${DB_DATABASE:shield_erp}?serverTimezone=Asia/Seoul&useSSL=false
+      username: shield
+      password: shield
       connection-test-query: select 1 from dual
       connection-timeout: 20000
       keepalive-time: 300000

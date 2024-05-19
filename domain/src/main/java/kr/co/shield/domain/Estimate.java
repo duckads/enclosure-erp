@@ -3,8 +3,8 @@ package kr.co.shield.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import kr.co.shield.dto.*;
-import kr.co.shield.ext.JpaConverterJson;
-import kr.co.shield.ext.Option;
+import kr.co.shield.ext.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "estimate")
-@ToString
+@ToString(exclude = "estimateDtl")
 public class Estimate extends Option {
 	
 	@Column(name= "seq", nullable = false)
@@ -38,18 +38,18 @@ public class Estimate extends Option {
 	private String estimateNote;
 
 	@Column(name="customer_com", columnDefinition = "TEXT")
-	@Convert(converter = JpaConverterJson.class)
-	private BusinessDealDTO customerCom;
+	@Convert(converter = BusinessDealDtoConverter.class)
+	private BusinessDealDto customerCom;
 
 	@Column(name="customer_mgr", columnDefinition = "TEXT")
-	@Convert(converter = JpaConverterJson.class)
+	@Convert(converter = BusinessDealMgrDtoConverter.class)
 	private BusinessDealMgrDto customerMgr;
 
 	@Column(name= "producer_seq") //공급자
 	private int producerSeq;
 
 	@Column(name="estimate_mgr", columnDefinition = "TEXT") //견적 담당자
-	@Convert(converter = JpaConverterJson.class)
+	@Convert(converter = EstimateMgrDtoConverter.class)
 	private EstimateMgrDto estimateMgr;
 
 	@Column(name= "member_seq")
@@ -96,6 +96,9 @@ public class Estimate extends Option {
 				.estimateOption(this.estimateOption)
 				.estimateDtl(estimateDtlDtos)
 				.estimateNote(this.estimateNote)
+				.customerCom(this.customerCom)
+				.customerMgr(this.customerMgr)
+				.estimateMgr(this.estimateMgr)
 				.producerSeq(this.producerSeq)
 				.memberSeq(this.memberSeq)
 				.estimateTp(this.estimateTp)
@@ -107,7 +110,7 @@ public class Estimate extends Option {
 				.build();
 	}
 
-	@OneToMany(mappedBy = "estimate")
+	@OneToMany(mappedBy = "estimate", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<EstimateDtl> estimateDtl = new ArrayList<>();
 }

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Fetch;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "estimate_dtl")
-@ToString
+@ToString(exclude = "estimate")
 public class EstimateDtl extends Option {
 	
 	@Column(name= "seq", nullable = false)
@@ -95,7 +96,7 @@ public class EstimateDtl extends Option {
 				.build();
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
 	@JoinColumn(name="estimate_seq")
 	private Estimate estimate;

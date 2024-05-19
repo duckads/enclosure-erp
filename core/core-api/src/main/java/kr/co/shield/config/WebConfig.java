@@ -32,7 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
 		.allowedOriginPatterns("*")
 		// allowCredentials과 같이 사용 X
 		// 모든 IP 응답을 허용
-//		 .allowedOrigins("http://localhost:8100")
+		.allowedOriginPatterns("http://localhost:[*]")
 		// jwt를 담은 헤더를 리액트에서 확인할 수 있도록
 //		.exposedHeaders("*")
 		// 모든 헤더의 응답을 허용

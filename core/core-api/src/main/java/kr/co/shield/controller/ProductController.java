@@ -1,4 +1,4 @@
-package kr.co.bizspring.gp.resource.controller;
+package kr.co.shield.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -62,56 +62,4 @@ public class ProductController {
 
         return ResponseEntity.ok(rtnObj);
     }
-
-//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK") })
-//	@Operation(summary = "Create", security = @SecurityRequirement(name = ShieldProperty.SPRINGDOC_SECURITY_NAME))
-//	@PostMapping
-//	public ResponseEntity<ResponseDto> create(HttpServletRequest request) {
-//		MemberDto user = (MemberDto)request.getAttribute(ShieldProperty.TKN_USER);
-//
-//		Map<String, Object> props = null;
-//
-//		String rtnMsg = this.productService.create(user, props);
-//
-//		ResponseDto responseDto = ResponseDto.builder()
-//				.message(rtnMsg)
-//				.build();
-//
-//		return ResponseEntity.ok(responseDto);
-//	}
-//
-//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK") })
-//	@Operation(summary = "Update", security = @SecurityRequirement(name = ShieldProperty.SPRINGDOC_SECURITY_NAME))
-//	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<ResponseDto> update(HttpServletRequest request, @PathVariable(required = true, name = "id") final Integer id) {
-//		MemberDto user = (MemberDto)request.getAttribute(ShieldProperty.TKN_USER);
-//
-//		Map<String, Object> props = Map.of("id", id);
-//
-//		String rtnMsg = this.productService.update(user, props);
-//
-//		ResponseDto responseDto = ResponseDto.builder()
-//				.message(rtnMsg)
-//				.build();
-//
-//		return ResponseEntity.ok(responseDto);
-//	}
-//
-//	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK") })
-//	@DeleteMapping("/{id}")
-//	@Operation(summary = "Delete", security = @SecurityRequirement(name = ShieldProperty.SPRINGDOC_SECURITY_NAME))
-//	public ResponseEntity<ResponseDto> delete(HttpServletRequest request, @PathVariable(required = true, name = "id") final Integer id) {
-//		MemberDto user = (MemberDto)request.getAttribute(ShieldProperty.TKN_USER);
-//
-//		Map<String, Object> props = Map.of("id", id);
-//
-//		String rtnMsg = this.productService.delete(user, props);
-//
-//		ResponseDto responseDto = ResponseDto.builder()
-//				.message(rtnMsg)
-//				.build();
-//
-//		return ResponseEntity.ok(responseDto);
-//	}
-//
 }

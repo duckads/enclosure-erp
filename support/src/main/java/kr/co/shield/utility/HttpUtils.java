@@ -14,7 +14,6 @@ public class HttpUtils {
 	private static int RECEIVE_TIMEOUT = 25000;
 	
 	public static String processHttp(String requestUrl, Map<String, String> requestParam) throws Exception {
-		log.info("call {} {}", requestUrl, requestParam);
 		
 		String rtnMsg = null;
 		

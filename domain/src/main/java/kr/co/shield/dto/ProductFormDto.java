@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 public class ProductFormDto {
     private String productNm; //품명
     private String productSize; //규격

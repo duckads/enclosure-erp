@@ -25,7 +25,9 @@ public class JpaConverterJson implements AttributeConverter<Object, String> {
     @Override
     public Object convertToEntityAttribute(String dbData) {
         try {
-            return objectMapper.readValue(dbData, Object.class);
+            Object o = objectMapper.readValue(dbData, Object.class);
+            System.out.println(o);
+            return o;
         } catch (IOException ex) {
             // logger.error("Unexpected IOEx decoding json from database: " + dbData);
             return null;

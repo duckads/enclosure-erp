@@ -20,6 +20,9 @@ dependencies {
     //mail
     implementation group: 'jakarta.mail', name: 'jakarta.mail-api', version: '2.1.2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.2.2'
+    implementation project(':common')
 
-
+    bootJar {
+        mainClass = 'kr.co.shield.CoreApiApplication'
+    }
 }

@@ -42,17 +42,15 @@ public class QnaServiceImpl implements QnaService {
 	public List<QnaDto> findAll(MemberDto user, Map<String, Object> props) {
 		List<QnaDto> rtnList = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
 		
 		/* implementation */
 		
 		String qnaTps = StringUtils.getString(props.get("qnaTps"));
 		String qnaSts = StringUtils.getString(props.get("qnaSts"));
 		
-		Specification<Qna> where = JpaUtil.equal(Qna.class, "agencySeq", tknAgency.getSeq());
+		Specification<Qna> where = JpaUtil.equal(Qna.class, "agencySeq", tknCompany.getSeq());
 		if (!qnaTps.isBlank()) {
 			where = where.and(JpaUtil.in(Qna.class, "qnaTp", Arrays.asList(qnaTps.split(","))));
 		}
@@ -79,10 +77,8 @@ public class QnaServiceImpl implements QnaService {
 	public QnaDto findOne(MemberDto user, Map<String, Object> props) {
 		QnaDto rtnObj = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
 		
 		/* implementation */
 		
@@ -125,10 +121,8 @@ public class QnaServiceImpl implements QnaService {
 	public String create(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
 		
 		/* implementation */
 		
@@ -144,10 +138,8 @@ public class QnaServiceImpl implements QnaService {
 	public String update(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
 		
 		/* implementation */
 		
@@ -163,11 +155,9 @@ public class QnaServiceImpl implements QnaService {
 	public String delete(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
 		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
-		
+
 		/* implementation */
 		
 		

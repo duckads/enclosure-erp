@@ -1,5 +1,8 @@
 package kr.co.shield.dto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import kr.co.shield.ext.JpaConverterJson;
 import kr.co.shield.ext.Option;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +23,10 @@ public class EstimateDto extends Option {
 	private String estimateNm;
 	private String estimateOption;
 	private String estimateNote;
+	private BusinessDealDto customerCom;
+	private BusinessDealMgrDto customerMgr;
 	private int producerSeq;
+	private EstimateMgrDto estimateMgr;
 	private int memberSeq;
 	private String estimateTp;
 	private String actSt;

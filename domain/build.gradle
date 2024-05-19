@@ -4,6 +4,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.15.2'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
     implementation project(':support')
+    implementation project(':common')
     compileOnly group: 'org.hibernate', name: 'hibernate-core', version: '6.0.0.Alpha2'
     implementation group: 'org.springframework', name: 'spring-web', version: '4.3.11.RELEASE'
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'

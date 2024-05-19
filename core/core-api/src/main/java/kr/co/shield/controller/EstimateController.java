@@ -27,7 +27,7 @@ public class EstimateController {
     public ResponseEntity<List<EstimateDto>> list(HttpServletRequest request) {
         List<EstimateDto> rtnList = null;
 
-        rtnList = this.estimateService.findAll();
+         rtnList = this.estimateService.findAll();
 
         return ResponseEntity.ok(rtnList);
     }

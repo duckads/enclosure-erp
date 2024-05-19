@@ -36,10 +36,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
 	public List<NoticeTemplateDto> findAll(MemberDto user, Map<String, Object> props) {
 		List<NoticeTemplateDto> rtnList = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -55,10 +53,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
 	public NoticeTemplateDto findOne(MemberDto user, Map<String, Object> props) {
 		NoticeTemplateDto rtnObj = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -74,10 +70,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
 	public String create(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -93,10 +87,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
 	public String update(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		
@@ -112,10 +104,8 @@ public class NoticeTemplateServiceImpl implements NoticeTemplateService {
 	public String delete(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+		CompanyDto tknCompany = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
+		List<Integer> tknMemberSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
 		
 		/* implementation */
 		

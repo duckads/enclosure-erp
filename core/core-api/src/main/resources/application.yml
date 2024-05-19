@@ -2,6 +2,18 @@ spring:
   config:
     import:
       - db-core.yml
+  mail:
+    host: smtp.xxx.com
+    username: fe
+    password: fef
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
 
 jwt:
   key-id: asj

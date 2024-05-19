@@ -44,12 +44,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public List<ProductDto> findAll(MemberDto user, Map<String, Object> props) {
 		List<ProductDto> rtnList = null;
-		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
-		
+
 		/* implementation */
 		
 		String productTp = StringUtils.getString(props.get("productTp"));
@@ -78,11 +73,6 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDto findOne(MemberDto user, Map<String, Object> props) {
 		ProductDto rtnObj = null;
 		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
-		
 		/* implementation */
 		
 		Integer id = NumberUtils.getNumber(props.get("id"));
@@ -100,11 +90,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public String create(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
-		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+
 		
 		/* implementation */
 		
@@ -119,11 +105,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public String update(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
-		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
+
 		
 		/* implementation */
 		
@@ -138,11 +120,6 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public String delete(MemberDto user, Map<String, Object> props) {
 		String rtnMsg = ShieldProperty.RK_MSG_SUCCESS;
-		
-		CompanyDto tknAgency = (CompanyDto)user.getOption(ShieldProperty.TKN_USER_AGENCY);
-		List<Integer> tknAdminSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_ADMIN);
-		List<Integer> tknClientSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_CLIENT);
-		List<Integer> tknTeamSeq = (List<Integer>)user.getOption(ShieldProperty.TKN_USER_TEAM);
 		
 		/* implementation */
 		

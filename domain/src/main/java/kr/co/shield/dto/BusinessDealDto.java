@@ -1,13 +1,11 @@
 package kr.co.shield.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Builder
 @Getter
 @Setter
-public class BusinessDealDTO {
+@NoArgsConstructor
+public class BusinessDealDto {
     // 수주처(회사명, 전화, 팩스, 회사 이메일) 똔느 발주처
     private String name; //회사명
     private String phone; //전화

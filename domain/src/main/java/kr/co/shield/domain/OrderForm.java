@@ -39,7 +39,7 @@ public class OrderForm extends Option {
 
 	@Column(name="supply_com", columnDefinition = "TEXT")
 	@Convert(converter = JpaConverterJson.class)
-	private BusinessDealDTO supplyCom;
+	private BusinessDealDto supplyCom;
 
 	@Column(name="supply_mgr", columnDefinition = "TEXT")
 	@Convert(converter = JpaConverterJson.class)
